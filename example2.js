@@ -1,10 +1,10 @@
 $.facebookLogin.appId = '{your_app_id}';
 $.facebookLogin.showLogs = false;
-$.facebookLogin.callbackConnected = function(userData) {
-	console.log('my callback');
+$.facebookLogin.success = function(userData) {
+	console.log('success');
 	console.log(userData);
 };
-$.facebookLogin.callbackFail = function(error) {
+$.facebookLogin.fail = function(error) {
 	console.log(error);
 };
 $.facebookLogin.init();

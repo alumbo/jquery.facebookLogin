@@ -8,8 +8,9 @@ Init Facebook login by calling <code>$.facebookLogin.init</code> function, with 
 <h2>Parameters</h2>
 <ul>
 	<li><em>appId</em>: Your Facebook App Id (required)</li>
-	<li><em>callbackConnected</em>: Called when login success (optional but useful...)</li>
-	<li><em>callbackFail</em>: Called when login fail (optional)</li>
+	<li><em>success</em>: Callback when login success (optional but useful...)</li>
+	<li><em>fail</em>: Callback when login fail (optional)</li>
+	<li><em>permissions</em>: Comma separated list of extended Facebook login permissions (optional)</li>
 	<li><em>showLogs</em>: Boolean to show logs in console or not (optional)</li>
 </ul>
 
@@ -19,11 +20,11 @@ Init Facebook login by calling <code>$.facebookLogin.init</code> function, with 
 <h3 id="e1">Example 1</h3>
 <pre><code>$.facebookLogin.init({
 	appId: '{your_app_id}',
-	callbackConnected: function(userData) {
-		console.log('my callback');
+	success: function(userData) {
+		console.log('success');
 		console.log(userData);
 	},
-	callbackFail: function(error) {
+	fail: function(error) {
 		console.log(error);
 	}
 });</code></pre>
@@ -31,11 +32,12 @@ Init Facebook login by calling <code>$.facebookLogin.init</code> function, with 
 <h3>Example 2</h3>
 <pre><code>$.facebookLogin.appId = '{your_app_id}';
 $.facebookLogin.showLogs = false;
-$.facebookLogin.callbackConnected = function(userData) {
-	console.log('my callback');
+$.facebookLogin.permissions = 'email,user_birthday';
+$.facebookLogin.success = function(userData) {
+	console.log('success');
 	console.log(userData);
 };
-$.facebookLogin.callbackFail = function(error) {
+$.facebookLogin.fail = function(error) {
 	console.log(error);
 };
 $.facebookLogin.init();</code></pre>

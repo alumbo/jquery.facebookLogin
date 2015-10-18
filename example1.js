@@ -1,10 +1,10 @@
 $.facebookLogin.init({
 	appId: '{your_app_id}',
-	callbackConnected: function(userData) {
-		console.log('my callback');
+	success: function(userData) {
+		console.log('success');
 		console.log(userData);
 	},
-	callbackFail: function(error) {
+	fail: function(error) {
 		console.log(error);
 	}
 });

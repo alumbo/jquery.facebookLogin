@@ -1,6 +1,7 @@
 $.facebookLogin = {
 	appId : null,
 	showLogs : true,
+	permissions : '',
 	init:function(params) {
 		if(params) {
 			for(var param in params) {
@@ -11,18 +12,21 @@ $.facebookLogin = {
 		window.fbAsyncInit = $.proxy(this._onReady, this);
 		this._loadScript(document, 'script', 'facebook-jssdk');
 	},
-	callbackConnected:function(userData) {
-		console.log('Default connected callback - Define the callback like this : $.facebookLogin.callbackConnected = function(userData) { ... };');
+	success:function(userData) {
+		console.log('Default success callback - Define the callback like this : $.facebookLogin.success = function(userData) { ... };');
 		console.log(userData);
 	},
-	callbackFail:function(error) {
-		console.log('Default fail callback - Define the callback like this : $.facebookLogin.callbackFail = function(error) { ... };');
+	fail:function(error) {
+		console.log('Default fail callback - Define the callback like this : $.facebookLogin.fail = function(error) { ... };');
 		console.log(userData);
 	},
 	login:function() {
 		if(FB) {
 			this._log('login');
-			FB.login();
+			FB.login(null, {
+				scope: this.permissions, 
+				return_scopes: true
+			});
 		}
 		else {
 			this._log('login fail (Facebook script not loaded) - retry in one second');
@@ -68,17 +72,17 @@ $.facebookLogin = {
 			this._onConnected();
 		} else if (response.status === 'not_authorized') {
 			this._log('not authorized');
-			this.callbackFail('not authorized');
+			this.error('not authorized');
 		} else {
 			this._log('not connected');
-			this.callbackFail('not connected');
+			this.error('not connected');
 		}
 	},
-  	_onConnected: function() {
+	_onConnected: function() {
 		this._log('onConnected');
 		FB.api('/me', $.proxy(function(response) {
 			this._log('successful login for: ' + response.name);
-			this.callbackConnected(response);
+			this.success(response);
 		}, this));
-  	}
+	}
 };
