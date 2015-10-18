@@ -19,21 +19,23 @@ Call login on button click <code>$.facebookLogin.login();</code><br/>
 
 
 <h2>Examples</h2>
+
 <h3>Example 1</h3>
-<code><pre>
-	$.facebookLogin.appId = '{your_app_id}';
-	$.facebookLogin.callbackConnected = function(userData) {
-		console.log('my callback');
-		console.log(userData);
-	};
-	$.facebookLogin.callbackFail = function(userData) {
-		console.log(error);
-	};
-	$.facebookLogin.init();
-</pre></code>
+<code>
+	<pre>$.facebookLogin.appId = '{your_app_id}';
+$.facebookLogin.callbackConnected = function(userData) {
+	console.log('my callback');
+	console.log(userData);
+};
+$.facebookLogin.callbackFail = function(userData) {
+	console.log(error);
+};
+$.facebookLogin.init();</pre>
+</code>
+
 <h3>Example 2</h3>
-<code><pre>
-$.facebookLogin.init({
+<code>
+	<pre>$.facebookLogin.init({
 	appId: '{your_app_id}',
 	showLogs: false,
 	callbackConnected: function(userData) {
@@ -43,5 +45,5 @@ $.facebookLogin.init({
 	callbackFail: function(error) {
 		console.log(error);
 	}
-});
-</pre></code>
+});</pre>
+</code>
