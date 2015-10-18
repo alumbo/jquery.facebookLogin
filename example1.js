@@ -3,7 +3,7 @@ $.facebookLogin.callbackConnected = function(userData) {
 	console.log('my callback');
 	console.log(userData);
 };
-$.facebookLogin.callbackFail = function(userData) {
+$.facebookLogin.callbackFail = function(error) {
 	console.log(error);
 };
 $.facebookLogin.init();

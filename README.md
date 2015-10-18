@@ -5,7 +5,7 @@ Facebook Login with jquery
 Insert the script <em>jquery.facebookLogin.js</em> in your page after <a href="http://jquery.com/download/" target="_blank">jQuery</a>.<br/>
 Define your appId <code>$.facebookLogin.appId = '{your_app_id}';</code><br/>
 Define the connected callback <code>$.facebookLogin.callbackConnected = function(userData) {};</code><br/>
-Define the fail callback <code>$.facebookLogin.callbackFail = function(userData) {};</code><br/>
+Define the fail callback <code>$.facebookLogin.callbackFail = function(error) {};</code><br/>
 Init Facebook login <code>$.facebookLogin.init();</code><br/>
 Call login on button click <code>$.facebookLogin.login();</code><br/>
 
@@ -26,7 +26,7 @@ $.facebookLogin.callbackConnected = function(userData) {
 	console.log('my callback');
 	console.log(userData);
 };
-$.facebookLogin.callbackFail = function(userData) {
+$.facebookLogin.callbackFail = function(error) {
 	console.log(error);
 };
 $.facebookLogin.init();</code></pre>
