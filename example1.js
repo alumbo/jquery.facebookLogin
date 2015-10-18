@@ -8,3 +8,11 @@ $.facebookLogin.init({
 		console.log(error);
 	}
 });
+
+$('#facebook-login').bind('click', function() {
+	$.facebookLogin.login();
+});
+
+$('#facebook-logout').bind('click', function() {
+	$.facebookLogin.logout();
+});

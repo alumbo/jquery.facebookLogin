@@ -24,7 +24,7 @@ $.facebookLogin = {
 		if(FB) {
 			this._log('login');
 			FB.login(null, {
-				scope: this.permissions, 
+				scope: this.permissions,
 				return_scopes: true
 			});
 		}
