@@ -1,8 +1,9 @@
 $.facebookLogin = {
-	appId : null,
-	showLogs : true,
-	permissions : '',
-	init:function(params) {
+	appId: null,
+	showLogs: true,
+	permissions: '',
+	connected: false,
+	init: function(params) {
 		if(params) {
 			for(var param in params) {
 				this[param] = params[param];
@@ -12,15 +13,15 @@ $.facebookLogin = {
 		window.fbAsyncInit = $.proxy(this._onReady, this);
 		this._loadScript(document, 'script', 'facebook-jssdk');
 	},
-	success:function(userData) {
+	success: function(userData) {
 		console.log('Default success callback - Define the callback like this : $.facebookLogin.success = function(userData) { ... };');
 		console.log(userData);
 	},
-	fail:function(error) {
+	fail: function(error) {
 		console.log('Default fail callback - Define the callback like this : $.facebookLogin.fail = function(error) { ... };');
 		console.log(userData);
 	},
-	login:function() {
+	login: function() {
 		if(FB) {
 			this._log('login');
 			FB.login(null, {
@@ -33,10 +34,16 @@ $.facebookLogin = {
 			setTimeout($.proxy(this.login, this), 1000);
 		}
 	},
+	logout: function() {
+		if(FB && this.connected) {
+			this._log('logout');
+			FB.logout();
+		}
+	},
 	checkLoginState: function() {
 		this._log('checkLoginState');
 		FB.getLoginStatus($.proxy(function(response) {
-			this.statusChangeCallback(response);
+			this._statusChangeCallback(response);
 		}, this));
 	},
 	_log: function(message) {
@@ -69,13 +76,16 @@ $.facebookLogin = {
 	_statusChangeCallback: function(response) {
 		this._log('statusChangeCallback');
 		if (response.status === 'connected') {
+			this.connected = true;
 			this._onConnected();
 		} else if (response.status === 'not_authorized') {
 			this._log('not authorized');
-			this.error('not authorized');
+			this.connected = false;
+			this.fail('not authorized');
 		} else {
 			this._log('not connected');
-			this.error('not connected');
+			this.connected = false;
+			this.fail('not connected');
 		}
 	},
 	_onConnected: function() {
