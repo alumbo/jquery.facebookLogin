@@ -5,13 +5,25 @@ jquery Facebook Login
 Insert the script <em>jquery.facebookLogin.js</em> in your page after <a href="http://jquery.com/download/" target="_blank">jQuery</a>.<br/>
 Init Facebook login by calling <code>$.facebookLogin.init</code> function, with object containing parameters (see <a href="#user-content-e1">Example 1</a>)<br/>
 
+<h2>Methods</h2>
+<ul>
+	<li><code>init</code>: Load facebook script and try to connect</li>
+	<li><code>login</code>: Show facebook login popup</li>
+	<li><code>logout</code>: Facebook logout</li>
+</ul>
+
 <h2>Parameters</h2>
 <ul>
-	<li><em>appId</em>: Your Facebook App Id (required)</li>
-	<li><em>success</em>: Callback when login success (optional but useful...)</li>
-	<li><em>fail</em>: Callback when login fail (optional)</li>
-	<li><em>permissions</em>: Comma separated list of extended Facebook login permissions (optional)</li>
-	<li><em>showLogs</em>: Boolean to show logs in console or not (optional)</li>
+	<li><code>appId</code>: Your Facebook App Id (required)</li>
+	<li><code>success</code>: Callback when login success (optional but useful...)</li>
+	<li><code>fail</code>: Callback when login fail (optional)</li>
+	<li><code>permissions</code>: Comma separated list of extended Facebook login permissions (optional)</li>
+	<li><code>showLogs</code>: Boolean to show logs in console or not (optional)</li>
+</ul>
+
+<h2>Variables</h2>
+<ul>
+	<li><code>connected</code>: Is user connected to Facebook</li>
 </ul>
 
 
@@ -27,6 +39,14 @@ Init Facebook login by calling <code>$.facebookLogin.init</code> function, with 
 	fail: function(error) {
 		console.log(error);
 	}
+});
+
+$('#facebook-login').bind('click', function() {
+	$.facebookLogin.login();
+});
+
+$('#facebook-logout').bind('click', function() {
+	$.facebookLogin.logout();
 });</code></pre>
 
 <h3>Example 2</h3>
