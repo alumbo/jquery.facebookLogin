@@ -1,40 +1,24 @@
 # jquery.facebookLogin
-Facebook Login with jquery
+jquery Facebook Login
 
 <h2>How to use</h2>
 Insert the script <em>jquery.facebookLogin.js</em> in your page after <a href="http://jquery.com/download/" target="_blank">jQuery</a>.<br/>
-Define your appId <code>$.facebookLogin.appId = '{your_app_id}';</code><br/>
-Define the connected callback <code>$.facebookLogin.callbackConnected = function(userData) {};</code><br/>
-Define the fail callback <code>$.facebookLogin.callbackFail = function(error) {};</code><br/>
-Init Facebook login <code>$.facebookLogin.init();</code><br/>
-Call login on button click <code>$.facebookLogin.login();</code><br/>
+Init Facebook login by calling <code>$.facebookLogin.init</code> function, with object containing parameters (see <a href="#e1">Example 1</a>)<br/>
 
 <h2>Parameters</h2>
 <ul>
-	<li><em>appId</em>: Your Facebook App Id</li>
-	<li><em>showLogs</em>: Boolean to show logs in console or not</li>
-	<li><em>callbackConnected</em>: Called when login success</li>
-	<li><em>callbackFail</em>: Called when login fail</li>
+	<li><em>appId</em>: Your Facebook App Id (required)</li>
+	<li><em>callbackConnected</em>: Called when login success (optional but useful...)</li>
+	<li><em>callbackFail</em>: Called when login fail (optional)</li>
+	<li><em>showLogs</em>: Boolean to show logs in console or not (optional)</li>
 </ul>
 
 
 <h2>Examples</h2>
 
-<h3>Example 1</h3>
-<pre><code>$.facebookLogin.appId = '{your_app_id}';
-$.facebookLogin.callbackConnected = function(userData) {
-	console.log('my callback');
-	console.log(userData);
-};
-$.facebookLogin.callbackFail = function(error) {
-	console.log(error);
-};
-$.facebookLogin.init();</code></pre>
-
-<h3>Example 2</h3>
+<h3 id="#e1">Example 1</h3>
 <pre><code>$.facebookLogin.init({
 	appId: '{your_app_id}',
-	showLogs: false,
 	callbackConnected: function(userData) {
 		console.log('my callback');
 		console.log(userData);
@@ -43,3 +27,15 @@ $.facebookLogin.init();</code></pre>
 		console.log(error);
 	}
 });</code></pre>
+
+<h3>Example 2</h3>
+<pre><code>$.facebookLogin.appId = '{your_app_id}';
+$.facebookLogin.showLogs = false;
+$.facebookLogin.callbackConnected = function(userData) {
+	console.log('my callback');
+	console.log(userData);
+};
+$.facebookLogin.callbackFail = function(error) {
+	console.log(error);
+};
+$.facebookLogin.init();</code></pre>
