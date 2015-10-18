@@ -20,7 +20,7 @@ Call login on button click <code>$.facebookLogin.login();</code><br/>
 
 <h2>Examples</h2>
 <h3>Example 1</h3>
-<code>
+<code><pre>
 	$.facebookLogin.appId = '{your_app_id}';
 	$.facebookLogin.callbackConnected = function(userData) {
 		console.log('my callback');
@@ -30,9 +30,9 @@ Call login on button click <code>$.facebookLogin.login();</code><br/>
 		console.log(error);
 	};
 	$.facebookLogin.init();
-</code>
+</pre></code>
 <h3>Example 2</h3>
-<code>
+<code><pre>
 $.facebookLogin.init({
 	appId: '{your_app_id}',
 	showLogs: false,
@@ -44,4 +44,4 @@ $.facebookLogin.init({
 		console.log(error);
 	}
 });
-</code>
+</pre></code>
