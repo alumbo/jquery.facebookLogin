@@ -1,7 +1,7 @@
 $.facebookLogin = {
 	appId: null,
 	showLogs: true,
-	permissions: '',
+	permissions: 'email',
 	connected: false,
 	init: function(params) {
 		if(params) {
@@ -24,7 +24,7 @@ $.facebookLogin = {
 	login: function() {
 		if(FB) {
 			this._log('login');
-			FB.login(null, {
+			FB.login($.proxy(this.checkLoginState, this), {
 				scope: this.permissions,
 				return_scopes: true
 			});

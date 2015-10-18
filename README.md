@@ -10,15 +10,16 @@ Init Facebook login by calling <code>$.facebookLogin.init</code> function, with 
 	<li><code>init</code>: Load facebook script and try to connect</li>
 	<li><code>login</code>: Show facebook login popup</li>
 	<li><code>logout</code>: Facebook logout</li>
+	<li><code>checkLoginState</code>: Checking the Facebook login state</li>
 </ul>
 
 <h2>Parameters</h2>
 <ul>
 	<li><code>appId</code>: Your Facebook App Id (required)</li>
-	<li><code>success</code>: Callback when login success (optional but useful...)</li>
-	<li><code>fail</code>: Callback when login fail (optional)</li>
-	<li><code>permissions</code>: Comma separated list of extended Facebook login permissions (optional)</li>
-	<li><code>showLogs</code>: Boolean to show logs in console or not (optional)</li>
+	<li><code>success</code>: Callback method called when login success (optional but useful...)</li>
+	<li><code>fail</code>: Callback method called when login fail (optional)</li>
+	<li><code>permissions</code>: Comma separated list of extended Facebook login permissions (optional) - default : 'email'</li>
+	<li><code>showLogs</code>: Boolean to show logs in console or not (optional) - default : true</li>
 </ul>
 
 <h2>Variables</h2>
